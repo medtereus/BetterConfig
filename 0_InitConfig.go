@@ -55,10 +55,12 @@ func InitBetterConfig(ProjectNameFolder string) error {
 	decoder := json.NewDecoder(bytes.NewReader(b))
 	decoder.UseNumber()
 	err = decoder.Decode(&valuesVar)
-
+	if err != nil {
+		return err
+	}
 	isInit = true
 
-	return err
+	return nil
 }
 
 func (p *preferences) Save() error {

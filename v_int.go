@@ -2,6 +2,7 @@ package BetterConfig
 
 import (
 	"encoding/json"
+	"log/slog"
 )
 
 func GetInt(key string) int {
@@ -9,6 +10,10 @@ func GetInt(key string) int {
 }
 
 func GetIntWithFallback(key string, fallback int) int {
+	if !isInit {
+		slog.Warn("BetterConfig is not initialized")
+		return fallback
+	}
 	v, ok := valuesVar[key]
 	if !ok {
 		return fallback
@@ -29,6 +34,10 @@ func GetIntWithFallback(key string, fallback int) int {
 }
 
 func SetInt(key string, value int) {
+	if !isInit {
+		slog.Warn("BetterConfig is not initialized")
+		return
+	}
 	valuesVar[key] = value
 	valuesVar.Save()
 }

@@ -2,6 +2,7 @@ package BetterConfig
 
 import (
 	"encoding/json"
+	"log/slog"
 )
 
 func GetFloat(key string) float64 {
@@ -9,6 +10,10 @@ func GetFloat(key string) float64 {
 }
 
 func GetFloatWithFallback(key string, fallback float64) float64 {
+	if !isInit {
+		slog.Warn("BetterConfig is not initialized")
+		return fallback
+	}
 	v, ok := valuesVar[key]
 	if !ok {
 		return fallback
@@ -29,6 +34,10 @@ func GetFloatWithFallback(key string, fallback float64) float64 {
 }
 
 func SetFloat(key string, value float64) {
+	if !isInit {
+		slog.Warn("BetterConfig is not initialized")
+		return
+	}
 	valuesVar[key] = value
 	valuesVar.Save()
 }

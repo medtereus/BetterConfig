@@ -2,6 +2,7 @@ package BetterConfig
 
 import (
 	"encoding/json"
+	"log/slog"
 	"strconv"
 )
 
@@ -10,6 +11,10 @@ func GetUInt(key string) uint {
 }
 
 func GetUIntWithFallback(key string, fallback uint) uint {
+	if !isInit {
+		slog.Warn("BetterConfig is not initialized")
+		return fallback
+	}
 	v, ok := valuesVar[key]
 	if !ok {
 		return fallback
@@ -30,6 +35,10 @@ func GetUIntWithFallback(key string, fallback uint) uint {
 }
 
 func SetUInt(key string, value uint) {
+	if !isInit {
+		slog.Warn("BetterConfig is not initialized")
+		return
+	}
 	valuesVar[key] = value
 	valuesVar.Save()
 }
