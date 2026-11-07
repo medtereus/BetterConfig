@@ -1,6 +1,7 @@
 package BetterConfig
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 )
@@ -19,6 +20,9 @@ func provideConfigFolderPath(filename string) (string, error) {
 	return dir, nil
 }
 
-func GetConfigFolderPath() string {
-	return projectName
+func GetConfigFolderPath() (string, error) {
+	if !isInit {
+		return "", fmt.Errorf("BetterConfig is not initialized")
+	}
+	return provideConfigFolderPath("")
 }
