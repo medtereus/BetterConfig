@@ -2,7 +2,6 @@
 default: run
 
 program_name = github.com/medtereus/BetterConfig
-build_path = ./_EXPORT/
 GITrepo := https://github.com/medtereus/BetterConfig
 GIT_tag_version:=v1.3.0
 
@@ -29,30 +28,6 @@ init:
 		-delete
 	-go mod init $(program_name)
 	go mod tidy
-
-buildALL: | buildd buildp
-
-buildd:
-	GOOS=$(BUILD_GOOS) GOARCH=$(BUILD_GOARCH)	\
-		go build 								\
-			-o $(build_path)$(program_name)_dev_$(BUILD_GOOS)_$(BUILD_GOARCH) \
-			./main.go
-
-buildp:
-	GOOS=$(BUILD_GOOS) GOARCH=$(BUILD_GOARCH)	\
-		go build 								\
-			-ldflags "-w -s" 					\
-			-o $(build_path)$(program_name)_prod_$(BUILD_GOOS)_$(BUILD_GOARCH)	\
-			./main.go
-
-# go env
-set_linuxCC:
-	go env -w CC=gcc
-	go env -w CXX=g++
-
-set_winCC:
-	go env -w CC=x86_64-w64-mingw32-gcc
-	go env -w CXX=x86_64-w64-mingw32-g++
 
 gitInit:
 	@if [ -z "$(GITrepo)" ]; then \

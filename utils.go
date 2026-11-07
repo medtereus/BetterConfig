@@ -24,5 +24,5 @@ func GetConfigFolderPath() (string, error) {
 	if !isInit {
 		return "", fmt.Errorf("BetterConfig is not initialized")
 	}
-	return provideConfigFolderPath("")
+	return provideConfigFolderPath(projectName)
 }
