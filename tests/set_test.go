@@ -36,7 +36,7 @@ const (
 )
 
 func Test_SetAll(t *testing.T) {
-	err := BetterConfig.InitBetterConfig(
+	err := BetterConfig.Init(
 		path.Join("Medtereus", "TestingMyConfigLibrary"),
 	)
 	if err != nil {

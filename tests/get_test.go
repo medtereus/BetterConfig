@@ -8,7 +8,7 @@ import (
 )
 
 func Test_GetAll(t *testing.T) {
-	err := BetterConfig.InitBetterConfig(
+	err := BetterConfig.Init(
 		path.Join("Medtereus", "TestingMyConfigLibrary"),
 	)
 	if err != nil {

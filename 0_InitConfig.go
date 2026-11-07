@@ -19,7 +19,7 @@ type preferences map[string]any
 
 var valuesVar preferences
 
-func InitBetterConfig(ProjectNameFolder string) error {
+func Init(ProjectNameFolder string) error {
 	if ProjectNameFolder == "" {
 		return fmt.Errorf("variable ProjectName can't be empty")
 	}
