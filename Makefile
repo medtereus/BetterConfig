@@ -3,7 +3,7 @@ default: run
 
 program_name = github.com/medtereus/BetterConfig
 GITrepo := https://github.com/medtereus/BetterConfig
-GIT_tag_version:=v1.4.1
+GIT_tag_version:=v1.4.2
 
 BUILD_GOOS=linux
 BUILD_GOARCH=amd64
@@ -52,6 +52,9 @@ gitC:
 	git push -u origin main
 
 gitUpdateTag:
+# MAJOR version when you make incompatible API changes
+# MINOR version when you add functionality in a backward compatible manner
+# PATCH version when you make backward compatible bug fixes
 	@if [ -z "$(GIT_tag_version)" ]; then \
 		echo "GIT_tag_version is not configured. Aborting."; exit 1; \
 	fi
