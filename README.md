@@ -38,7 +38,7 @@ import (
 )
 
 func main() {
-    if err := BetterConfig.InitBetterConfig("MyApp"); err != nil {
+    if err := BetterConfig.Init("MyApp"); err != nil {
         log.Fatal(err)
     }
 
