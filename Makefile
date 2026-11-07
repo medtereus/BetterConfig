@@ -3,7 +3,7 @@ default: run
 
 program_name = github.com/medtereus/BetterConfig
 GITrepo := https://github.com/medtereus/BetterConfig
-GIT_tag_version:=v1.3.0
+GIT_tag_version:=v1.3.1
 
 BUILD_GOOS=linux
 BUILD_GOARCH=amd64
