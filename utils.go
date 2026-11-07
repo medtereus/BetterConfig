@@ -19,13 +19,6 @@ func provideConfigFolderPath(filename string) (string, error) {
 	return dir, nil
 }
 
-func isInitDone() bool {
-	return isInit == true
-}
-func getThisConfigFolder() string {
-	return configFilePath
-}
-
 func GetConfigFolderPath() string {
 	return projectName
 }

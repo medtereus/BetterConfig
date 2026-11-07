@@ -16,6 +16,7 @@ func GetIntWithFallback(key string, fallback int) int {
 	}
 	v, ok := valuesVar[key]
 	if !ok {
+		SetInt(key, fallback)
 		return fallback
 	}
 
@@ -25,10 +26,12 @@ func GetIntWithFallback(key string, fallback int) int {
 	case json.Number:
 		i, err := n.Int64()
 		if err != nil {
+			SetInt(key, fallback)
 			return fallback
 		}
 		return int(i)
 	default:
+		SetInt(key, fallback)
 		return fallback
 	}
 }

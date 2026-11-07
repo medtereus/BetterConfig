@@ -11,7 +11,12 @@ func GetBoolWithFallback(key string, fallback bool) bool {
 		slog.Warn("BetterConfig is not initialized")
 		return fallback
 	}
-	return getValueWithFallback[bool](key, fallback)
+
+	returnV, isFallback := getValueWithFallback[bool](key, fallback)
+	if isFallback {
+		SetBool(key, fallback)
+	}
+	return returnV
 }
 
 func SetBool(key string, value bool) {

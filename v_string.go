@@ -11,7 +11,12 @@ func GetStringWithFallback(key, fallback string) string {
 		slog.Warn("BetterConfig is not initialized")
 		return fallback
 	}
-	return getValueWithFallback[string](key, fallback)
+	reutrnV, isFallback := getValueWithFallback[string](key, fallback)
+	if isFallback {
+		SetString(key, fallback)
+	}
+	return reutrnV
+
 }
 
 func SetString(key, value string) {

@@ -4,7 +4,7 @@ default: run
 program_name = github.com/medtereus/BetterConfig
 build_path = ./_EXPORT/
 GITrepo := https://github.com/medtereus/BetterConfig
-GIT_tag_version:=v1.2.1
+GIT_tag_version:=v1.2.2
 
 BUILD_GOOS=linux
 BUILD_GOARCH=amd64

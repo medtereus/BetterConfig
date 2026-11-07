@@ -16,6 +16,7 @@ func GetFloatWithFallback(key string, fallback float64) float64 {
 	}
 	v, ok := valuesVar[key]
 	if !ok {
+		SetFloat(key, fallback)
 		return fallback
 	}
 
@@ -25,10 +26,12 @@ func GetFloatWithFallback(key string, fallback float64) float64 {
 	case json.Number:
 		i, err := n.Float64()
 		if err != nil {
+			SetFloat(key, fallback)
 			return fallback
 		}
 		return i
 	default:
+		SetFloat(key, fallback)
 		return fallback
 	}
 }

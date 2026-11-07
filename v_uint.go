@@ -17,6 +17,7 @@ func GetUIntWithFallback(key string, fallback uint) uint {
 	}
 	v, ok := valuesVar[key]
 	if !ok {
+		SetUInt(key, fallback)
 		return fallback
 	}
 
@@ -26,10 +27,12 @@ func GetUIntWithFallback(key string, fallback uint) uint {
 	case json.Number:
 		i, err := strconv.ParseUint(n.String(), 10, strconv.IntSize)
 		if err != nil {
+			SetUInt(key, fallback)
 			return fallback
 		}
 		return uint(i)
 	default:
+		SetUInt(key, fallback)
 		return fallback
 	}
 }
