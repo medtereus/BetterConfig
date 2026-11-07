@@ -25,3 +25,7 @@ func isInitDone() bool {
 func getThisConfigFolder() string {
 	return configFilePath
 }
+
+func GetConfigFolderPath() string {
+	return projectName
+}
