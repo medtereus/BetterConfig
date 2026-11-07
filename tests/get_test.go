@@ -4,7 +4,7 @@ import (
 	"path"
 	"testing"
 
-	"BetterConfig"
+	"github.com/medtereus/BetterConfig"
 )
 
 func Test_GetAll(t *testing.T) {

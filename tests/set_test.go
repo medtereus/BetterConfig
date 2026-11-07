@@ -1,9 +1,10 @@
 package BetterConfig_test
 
 import (
-	"BetterConfig"
 	"path"
 	"testing"
+
+	"github.com/medtereus/BetterConfig"
 )
 
 const (

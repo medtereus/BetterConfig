@@ -18,54 +18,6 @@ BetterConfig — небольшая библиотека для хранения
 - Persistent storage between application runs.
 - No third-party dependencies required by the core implementation.
 
-## Project structure
-
-text
-
-```
-BetterConfig/
-├── 0_InitConfig.go
-├── getValueTypeWithFallbackGeneric.go
-├── utils.go
-├── v_bool.go
-├── v_float.go
-├── v_generic.go
-├── v_int.go
-├── v_string.go
-├── v_uint.go
-├── v__RemoveValue.go
-└── go.mod
-```
-
-The implementation is intentionally straightforward:
-
-- `0_InitConfig.go` — initialization, JSON loading and saving.
-- `getValueTypeWithFallbackGeneric.go` — shared generic helper for retrieving values with fallback support.
-- `utils.go` — configuration path utilities and initialization state.
-- `v_bool.go` — boolean getters and setters.
-- `v_float.go` — floating-point getters and setters.
-- `v_int.go` — signed integer getters and setters.
-- `v_string.go` — string getters and setters.
-- `v_uint.go` — unsigned integer getters and setters.
-- `v_generic.go` — generic value access.
-- `v__RemoveValue.go` — removal of configuration entries.
-
-## Installation
-
-This is primarily a personal library. If you want to use it in another Go project, clone the repository and configure the module dependency accordingly.
-
-For local development, a Go module `replace` directive can point to a local checkout:
-
-go
-
-```
-require BetterConfig v0.0.0
-
-replace BetterConfig => ./BetterConfig
-```
-
-Adjust the paths and module name to match your repository layout.
-
 ## Usage
 
 ### Initialization
@@ -161,7 +113,7 @@ json
 ```
 {
   "ENABLE_FEATURE": true,
-  "USERNAME": "Bobr Kurwa",
+  "USERNAME": "John Smith",
   "RETRY_COUNT": 5,
   "MAX_ITEMS": 100,
   "SCALE": 3.141592
